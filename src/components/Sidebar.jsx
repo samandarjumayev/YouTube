@@ -11,7 +11,7 @@ function Sidebar(){
             <i className="fa-solid fa-bars cursor-pointer text-xl text-gray-500"></i>
             <span className="flex items-center gap-1 cursor-pointer">
                 <img src={logo} alt="" className="w-[25px]" />
-                <p className="font-[cursive] font-semibold">YouTube</p>
+                <p className="font-[cursive] font-semibold">SamTube</p>
             </span>
         </NavLink>
         

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import loadingGif from '../../images/gifs/loading.gif';
 
+const myApiKey = 'AIzaSyC_GnqTxxp_fliflf7y9ziewDkmOMZsJVs';
+const myURL = `https://www.googleapis.com/youtube/v3/search?key=${myApiKey}&q=frontend&type=video&part=snippet&maxResults=18`
+
+
 function Home(){
-    const [videoCount, setVideoCount] = useState(12);
-    const myApiKey = 'AIzaSyC_GnqTxxp_fliflf7y9ziewDkmOMZsJVs';
-    const myURL = `https://www.googleapis.com/youtube/v3/search?key=${myApiKey}&q=frontend&type=video&part=snippet&maxResults=${videoCount}`
+    // const [videoCount, setVideoCount] = useState(12);
 
     const [needID, setNeedID] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -31,7 +33,7 @@ function Home(){
                 </div>
             ) : (
                 needID?.items?.map((item, index) => {
-                    return <div key={index} className="h-[280px] cursor-pointer flex flex-col">
+                    return <div key={index} className="h-[280px] hover:bg-zinc-400/60 rounded-2xl px-3 py-1.5 cursor-pointer flex flex-col transition-all duration-300 hover:duration-200 active:duration-150 active:scale-95">
                         <div className="h-[200px] w-[100%] rounded-2xl overflow-hidden">
                             <img src={item.snippet.thumbnails.medium.url} className="h-full w-full object-cover" />
                         </div>
@@ -50,21 +52,7 @@ function Home(){
                 })
             )}
         </div>
-        
-        {isLoading ? (
-            <p></p>
-        ) : (
-            <div className="my-5 flex justify-center items-center">
-                <button onClick={(e) => {
-                    if(videoCount <= 36){
-                        setVideoCount(videoCount + 12);
-                        getFetchData();
-                    }else {
-                        e.target.style.display = 'none';
-                    }
-                }} className="border px-3 rounded-[5px] text-zinc-500 hover:text-black cursor-pointer transition-all duration-250 active:duration-100 active:scale-90">Show more</button>
-            </div>
-        )}
+    
     </div>
 }
 
